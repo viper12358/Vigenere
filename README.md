@@ -1,7 +1,7 @@
 # Vigenere
 Vigenere Cipher implementation in C:
 
-I have to throw this online since other code I found only were inadequate:
+I have to throw this online since other code I found online were inadequate:
 1. They didn't take into account special characters
 2. Upper and lower case plaintext has different ciphertext
 3. Spaces are not kept in ciphertext
