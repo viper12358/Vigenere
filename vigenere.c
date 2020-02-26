@@ -38,7 +38,7 @@ int main(){
     }
   }
   
-
+  // encryption
   for(int i = 0; i < strlen(plaintext); i++){
     if (isalpha(newKey[i])){
       char alpha = islower(plaintext[i]) ? 'a' : 'A';         
@@ -50,6 +50,7 @@ int main(){
     }
   }
 
+  // if you want to decrypt, formula is on Wiki, just reverse the bloody process
     return 0;
 }
   
