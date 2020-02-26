@@ -1,4 +1,4 @@
-// Simply Vigenere cipher in C
+// Simple Vigenere cipher in C
 // I have to throw this online since other code I found only were inadequate
 // 1. They didn't take into account special characters
 // 2. Upper and lower case plaintext has different cipher text
