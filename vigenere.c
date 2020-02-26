@@ -15,6 +15,9 @@ int main(){
     char ciphertext[SIZE];
     char key[5] = "VIPER";
     char newKey[SIZE];
+    
+    // you can define your own plaintext here.
+    // or just do a function call, doesn't matter.
 
     // generating the key
     // i to keep track of the indices in the string, j is for the original key
