@@ -13,7 +13,9 @@ int main(){
 
     char plaintext[SIZE];
     char ciphertext[SIZE];
-    char key[5] = "VIPER";
+    // this is just an example key. Make one yourself if you want.
+    // just don't pick key contains special characters
+    char key[5] = "VIPER";          
     char newKey[SIZE];
     
     // you can define your own plaintext here.
