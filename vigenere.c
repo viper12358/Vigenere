@@ -47,7 +47,7 @@ int main(int argc, char argv[]){
     // you can choose to uppercase final ciphertext. In my encryption I want it to be case sensitive.      
     for(i = 0; i < strlen(plaintext); i++){
         if (isalpha(newKey[i])){        // checking if this is an alphabet character (ignore special characater)
-            char alpha = islower(plaintext[i]) ? 'a' : 'A';   // offset by upper case character since we want the output to be uppercase
+            char alpha = islower(plaintext[i]) ? 'a' : 'A';   // offset by upper case character since we want the output to be case sensitive
             ciphertext[i] = ((toupper(plaintext[i]) + newKey[i]) % 26) + alpha;   // Vigenere cipher formula
         }
         else {
