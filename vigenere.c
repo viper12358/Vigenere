@@ -49,7 +49,6 @@ int main(int argc, char argv[]){
             char alpha = islower(plaintext[i]) ? 'a' : 'A';   // offset by upper case character since we want the output to be uppercase
             ciphertext[i] = ((toupper(plaintext[i]) + newKey[i]) % 26) + alpha;   // Vigenere cipher formula
         }
-
         else {
             ciphertext[i] = plaintext[i];      //not alphabet => no need for encryption
         }
@@ -63,12 +62,12 @@ int main(int argc, char argv[]){
             char alpha = islower(plaintext[i]) ? 'a' : 'A';
             plaintext[i] = ((toupper(ciphertext[i]) - newKey[i] + 26) % 26) + alpha;    //adding 26 to get back the correct ASCII value
         }
-      
         else {
             plaintext[i] = ciphertext[i];
         }
     }
 
     printf("Plaintext: %s\n", plaintext);
+    
     return 0;
 }
