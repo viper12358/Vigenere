@@ -15,7 +15,7 @@ int main(int argc, char argv[]){
     char ciphertext[SIZE];
     char key[5] = "VIPER";  // this is just an example key. Just don't define key contains special characters
     char newKey[SIZE];
-    
+    int i, j;
     // remember to set the plaintext first, otherwise comment this line out
     printf("Original plaintext: %s\n", plaintext);
     
@@ -25,7 +25,7 @@ int main(int argc, char argv[]){
      a known problem in Windows computer that run Cygwin: strlen() will count null character '\0'
      as an extra character.  If you are using Linux/UNIX, replace 5 with strlen(key)*/
     
-    for (int i = 0, j = 0; i < strlen(plaintext); i++, j++){
+    for (i = 0, j = 0; i < strlen(plaintext); i++, j++){
         if (isalpha(plaintext[i])){         // if this part of plaintext is an alphabet character
             if (j == 5){                    // reach the end of key, reset counter
                 j = 0;   
@@ -40,12 +40,12 @@ int main(int argc, char argv[]){
             j-=1;
         }
     }
-  
-    printf("Key generate: %s\n", newKey);   // checking if your product is correct
+    newKey[i] = '\0';       // proper null character termination of the string (so we don't have giberish at the end).
+    printf("Key generated: %s\n", newKey);   // checking if your product is correct
 
     // encryption:
     // you can choose to uppercase final ciphertext. In my encryption I want it to be case sensitive.      
-    for(int i = 0; i < strlen(plaintext); i++){
+    for(i = 0; i < strlen(plaintext); i++){
         if (isalpha(newKey[i])){        // checking if this is an alphabet character (ignore special characater)
             char alpha = islower(plaintext[i]) ? 'a' : 'A';   // offset by upper case character since we want the output to be uppercase
             ciphertext[i] = ((toupper(plaintext[i]) + newKey[i]) % 26) + alpha;   // Vigenere cipher formula
@@ -54,12 +54,12 @@ int main(int argc, char argv[]){
             ciphertext[i] = plaintext[i];      //not alphabet => no need for encryption
         }
     }
-
+    ciphertext[i] = '\0';
     printf("Cipher text: %s\n", ciphertext);  
 
     // decryption:
     // if you choose to make your cipher text all uppercase, then remove toupper()
-    for(int i = 0; i < strlen(ciphertext); i ++){
+    for(i = 0; i < strlen(ciphertext); i ++){
         if(isalpha(plaintext[i])){
             char alpha = islower(plaintext[i]) ? 'a' : 'A';
             plaintext[i] = ((toupper(ciphertext[i]) - newKey[i] + 26) % 26) + alpha;    //adding 26 to get back the correct ASCII value
@@ -68,7 +68,7 @@ int main(int argc, char argv[]){
             plaintext[i] = ciphertext[i];
         }
     }
-
+    plaintext[i] = '\0';
     printf("Plaintext: %s\n", plaintext);
     
     return 0;
