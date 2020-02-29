@@ -3,7 +3,6 @@
 // Feel free to use this whatever way you want
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 
