@@ -17,6 +17,8 @@ int main(){
 
     // generating the key
     // i to keep track of the indices in the string, j is for the original key
+    // NOTE: you can hardcode strlen(key) to be exactly 5. Sometimes C compiler will count the the null character,
+    // which result in wrong key output
     for (int i = 0, j = 0; i < strlen(plaintext); i++, j++){
     if (isalpha(plaintext[i])){       // alphabet character
       if (j == strlen(key)){                    // reach the end of key, reset counter
@@ -26,7 +28,7 @@ int main(){
     }
 
     else {      
-      if (j == strlen(key)){                   
+      if (j == strlen(key)){                               
         j = 0;    
       }
       newKey[i] = ' ';    // simply ignore it
