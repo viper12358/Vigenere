@@ -1,9 +1,14 @@
+// Vigenere Cipher implementation in C
+// Reference: https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher
+// Feel free to use this whatever way you want
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#define SIZE 100
-// program to encrypt user string by keyword entered in command line
+
+#define SIZE 100    // example size.
+
 
 int main(int argc, char argv[]){
     // you can define your own plaintext here.
