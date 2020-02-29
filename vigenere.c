@@ -59,7 +59,6 @@ int main(int argc, char argv[]){
     printf("Cipher text: %s\n", ciphertext);
 
     // decryption:
-    
     for(int i = 0; i < strlen(ciphertext); i ++){
         if(isalpha(plaintext[i])){
             char alpha = islower(plaintext[i]) ? 'a' : 'A';
