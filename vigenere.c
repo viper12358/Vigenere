@@ -47,6 +47,7 @@ int main(){
   }
 
   // if you want to decrypt, formula is on Wiki, just reverse the bloody process
+  
     return 0;
 }
   
