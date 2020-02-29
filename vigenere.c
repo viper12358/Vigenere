@@ -9,26 +9,21 @@
 
 #define SIZE 100    // example size.
 
-
 int main(int argc, char argv[]){
-    // you can define your own plaintext here.
-    // or just do a function call, doesn't matter.
-    char plaintext[SIZE];
+    
+    char plaintext[SIZE];   // you can define your own plaintext here, or just do a function call
     char ciphertext[SIZE];
-    // this is just an example key. Make one yourself if you want.
-    // just don't pick key contains special characters
-    char key[5] = "VIPER";          
+    char key[5] = "VIPER";  // this is just an example key. Just don't define key contains special characters
     char newKey[SIZE];
     
     // remember to set the plaintext first, otherwise comment this line out
     printf("Original plaintext: %s\n", plaintext);
     
-    /* generating the key
-     i to keep track of the indices in the string, j is for the original key
+    /* Generating the key
+     i is to keep track of the indices in the string, j is for the original key
      now I have to hard code j == 5 instead of j == strlen(key) since there is 
-     a known problem in Windows computer that run Cygwin:
-     strlen() will count null character '\0' as an extra character. 
-     If you are using Linux/UNIX like I should have, replace 5 with strlen(key)  */
+     a known problem in Windows computer that run Cygwin: strlen() will count null character '\0'
+     as an extra character.  If you are using Linux/UNIX, replace 5 with strlen(key)*/
     
     for (int i = 0, j = 0; i < strlen(plaintext); i++, j++){
         if (isalpha(plaintext[i])){         // if this part of plaintext is an alphabet character
@@ -37,9 +32,8 @@ int main(int argc, char argv[]){
             }  
             newKey[i] = key[j];   
         }
-
         else {      
-            if (j == 5){                   
+            if (j == 5){                    // always reset the counter   
                 j = 0;    
             }
             newKey[i] = ' ';    // simply ignore it (not a alphabet character)
@@ -47,11 +41,11 @@ int main(int argc, char argv[]){
         }
     }
   
-    printf("Key generate: %s\n", newKey);
+    printf("Key generate: %s\n", newKey);   // checking if your product is correct
 
     // encryption
     for(int i = 0; i < strlen(plaintext); i++){
-        if (isalpha(newKey[i])){
+        if (isalpha(newKey[i])){        // checking if this is an alphabet character (ignore special characater)
             char alpha = islower(plaintext[i]) ? 'a' : 'A';   // offset by upper case character since we want the output to be uppercase
             ciphertext[i] = ((toupper(plaintext[i]) + newKey[i]) % 26) + alpha;   // Vigenere cipher formula
         }
@@ -61,7 +55,7 @@ int main(int argc, char argv[]){
         }
     }
 
-    printf("Cipher text: %s\n", ciphertext);
+    printf("Cipher text: %s\n", ciphertext);        
 
     // decryption:
     for(int i = 0; i < strlen(ciphertext); i ++){
