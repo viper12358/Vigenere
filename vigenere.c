@@ -43,7 +43,8 @@ int main(int argc, char argv[]){
   
     printf("Key generate: %s\n", newKey);   // checking if your product is correct
 
-    // encryption
+    // encryption:
+    // you can choose to uppercase final ciphertext. In my encryption I want it to be case sensitive.      
     for(int i = 0; i < strlen(plaintext); i++){
         if (isalpha(newKey[i])){        // checking if this is an alphabet character (ignore special characater)
             char alpha = islower(plaintext[i]) ? 'a' : 'A';   // offset by upper case character since we want the output to be uppercase
@@ -54,9 +55,10 @@ int main(int argc, char argv[]){
         }
     }
 
-    printf("Cipher text: %s\n", ciphertext);        
+    printf("Cipher text: %s\n", ciphertext);  
 
     // decryption:
+    // if you choose to make your cipher text all uppercase, then remove toupper()
     for(int i = 0; i < strlen(ciphertext); i ++){
         if(isalpha(plaintext[i])){
             char alpha = islower(plaintext[i]) ? 'a' : 'A';
