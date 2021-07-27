@@ -6,13 +6,13 @@
 #include <string.h>
 #include <ctype.h>
 
-#define SIZE 100    // example size.
+#define SIZE 100   
 
 int main(int argc, char argv[]){
     
-    char plaintext[SIZE];   // you can define your own plaintext here, or just do a function call
+    char plaintext[SIZE];   
     char ciphertext[SIZE];
-    char key[5] = "VIPER";  // this is just an example key. Just don't define key contains special characters
+    char key[5] = "VIPER";  // example key
     char newKey[SIZE];
     int i, j;
     // remember to set the plaintext first, otherwise comment this line out
@@ -32,25 +32,25 @@ int main(int argc, char argv[]){
             newKey[i] = key[j];   
         }
         else {      
-            if (j == 5){                    // always reset the counter   
+            if (j == 5){                       
                 j = 0;    
             }
-            newKey[i] = ' ';    // simply ignore it (not a alphabet character)
+            newKey[i] = ' ';    
             j-=1;
         }
     }
-    newKey[i] = '\0';       // proper null character termination of the string (so we don't have giberish at the end).
-    printf("Key generated: %s\n", newKey);   // checking if your product is correct
+    newKey[i] = '\0';       
+    printf("Key generated: %s\n", newKey);   
 
     // encryption:
     // you can choose to uppercase final ciphertext. In my encryption I want it to be case sensitive.      
     for(i = 0; i < strlen(plaintext); i++){
-        if (isalpha(newKey[i])){        // checking if this is an alphabet character (ignore special characater)
-            char alpha = islower(plaintext[i]) ? 'a' : 'A';   // offset by upper case character since we want the output to be case sensitive
-            ciphertext[i] = ((toupper(plaintext[i]) + newKey[i]) % 26) + alpha;   // Vigenere cipher formula
+        if (isalpha(newKey[i])){       
+            char alpha = islower(plaintext[i]) ? 'a' : 'A';  
+            ciphertext[i] = ((toupper(plaintext[i]) + newKey[i]) % 26) + alpha;  
         }
         else {
-            ciphertext[i] = plaintext[i];      //not alphabet => no need for encryption
+            ciphertext[i] = plaintext[i];      
         }
     }
     ciphertext[i] = '\0';
@@ -61,7 +61,7 @@ int main(int argc, char argv[]){
     for(i = 0; i < strlen(ciphertext); i ++){
         if(isalpha(plaintext[i])){
             char alpha = islower(plaintext[i]) ? 'a' : 'A';
-            plaintext[i] = ((toupper(ciphertext[i]) - newKey[i] + 26) % 26) + alpha;    //adding 26 to get back the correct ASCII value
+            plaintext[i] = ((toupper(ciphertext[i]) - newKey[i] + 26) % 26) + alpha;   
         }
         else {
             plaintext[i] = ciphertext[i];
